@@ -1,29 +1,26 @@
-# MyCharDev – Linux Character Device Driver
+MyCharDev: A Simple Linux Character Driver
 
-Simple Linux character device driver demonstrating basic file operations.
+This is a basic character device driver template. I wrote this to practice using the modern cdev and device_class APIs rather than the older register_chrdev approach. It handles the fundamentals of moving data between user-space and kernel memory.
+Key Details
 
-## Features
-- Open, read, write, and close device operations
-- Kernel–user space communication using `copy_to_user` / `copy_from_user`
-- Creates `/dev/mychardev` device node
-- Unit test for validation
-- Can be compiled and loaded on Linux kernel
+    Automatic Nodes: Uses device_create so the /dev/mychardev node pops up automatically on load.
+
+    Boundary Safety: Uses copy_to_user and copy_from_user to prevent kernel panics when moving data.
+
+    Dynamic Allocation: Requests a major number dynamically to avoid system conflicts.
+
+How to use it
+
+# Build the driver and test app
 make
-## How to Build & Run
-```bash
-make                    # Build kernel module
-sudo insmod src/mychardev.ko   # Load module
-ls -l /dev/mychardev          # Verify device node
 
-# Test user-space program
+# Load the module
+sudo insmod src/mychardev.ko
+
+# Run the test
 cd tests
 gcc test_mychardev.c -o test_mychardev
-sudo ./test_mychardev
+./test_mychardev
 
-# Manual write/read
-echo "Hello Kernel" | sudo tee /dev/mychardev
-sudo cat /dev/mychardev
-
-# Unload module
-sudo rmmod mychardev
+# Check the logs
 dmesg | tail
