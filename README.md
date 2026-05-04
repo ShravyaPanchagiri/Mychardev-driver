@@ -1,4 +1,4 @@
-MyCharDev: A Simple Linux Character Driver
+# MyCharDev: A Simple Linux Character Driver
 
 This is a basic character device driver template. I wrote this to practice using the modern cdev and device_class APIs rather than the older register_chrdev approach. It handles the fundamentals of moving data between user-space and kernel memory.
 Key Details
