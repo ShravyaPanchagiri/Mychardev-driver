@@ -1,0 +1,14 @@
+# kernel build artifacts
+*.o
+*.ko
+*.mod.c
+*.mod
+*.mod.o
+*.order
+*.symvers
+.*.cmd
+.tmp_versions/
+
+# User-space binaries
+test_app
+test_mychardev

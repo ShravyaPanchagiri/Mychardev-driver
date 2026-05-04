@@ -8,7 +8,7 @@ Simple Linux character device driver demonstrating basic file operations.
 - Creates `/dev/mychardev` device node
 - Unit test for validation
 - Can be compiled and loaded on Linux kernel
-
+make
 ## How to Build & Run
 ```bash
 make                    # Build kernel module
